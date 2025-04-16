@@ -1,21 +1,41 @@
-<div class="container">
-  <div class="header" [class.dark-mode]="darkMode()">
-    <nav>
-      <a routerLink="/" routerLinkActive="active">Home</a>
-      <a routerLink="/about" routerLinkActive="active">DashBoard</a>
-    </nav>
-    <div class="toggle-container">
-      <mat-icon>settings</mat-icon>
-      <mat-slide-toggle [checked]="darkMode()" (change)="toggleDarkMode()">
-        <mat-icon>{{ darkMode() ? 'dark_mode' : 'light_mode' }}</mat-icon>
-      </mat-slide-toggle>
+<div class="app-wrapper" [class.dark-mode]="darkModeService.darkMode()">
+  <div class="centered-layout">
+    <div class="header">
+      <div class="logo">
+        <a routerLink="/">Angular</a>
+      </div>
+      <nav>
+        <a routerLink="/" routerLinkActive="active">Home</a>
+        <a routerLink="/youtube-dashboard" routerLinkActive="active">Dashboard</a>
+      </nav>
+      <div class="toggle-container">
+        <mat-slide-toggle [checked]="darkModeService.darkMode()" (change)="darkModeService.toggleDarkMode()">
+          <mat-icon>{{ darkModeService.darkMode() ? 'dark_mode' : 'light_mode' }}</mat-icon>
+        </mat-slide-toggle>
+      </div>
     </div>
-  </div>
-  <div class="content">
-    <router-outlet></router-outlet>
-  </div>
-  <div class="footer" [class.dark-mode]="darkMode()" [class.visible]="true">
-    <div class="footer-content">
+    
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+    
+    <div class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Angular</h3>
+          <p>Modern web development platform</p>
+        </div>
+        <div class="footer-section">
+          <h4>Links</h4>
+          <a routerLink="/">Home</a>
+          <a routerLink="/youtube-dashboard">Dashboard</a>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p>example.com</p>
+          <p>+1 (123) 456-7890</p>
+        </div>
+      </div>
       <div class="copyright">
         <p>&copy; 2025 Angular. All rights reserved.</p>
       </div>
