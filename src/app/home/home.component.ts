@@ -9,10 +9,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-home',
   standalone: true,
   imports: [
     CommonModule,
@@ -24,32 +23,12 @@ import { RouterOutlet } from '@angular/router';
     MatInputModule,
     MatCheckboxModule,
     MatExpansionModule,
-    MatCardModule,
-    RouterOutlet
+    MatCardModule
   ],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class AppComponent {
-  title = 'Angular Dark Mode';
-  darkMode = signal(false);
-
-  constructor() {
-    const savedMode = localStorage.getItem('darkMode');
-    if (savedMode) {
-      this.darkMode.set(savedMode === 'true');
-    } else {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      this.darkMode.set(prefersDark);
-    }
-
-    effect(() => {
-      document.body.classList.toggle('dark-mode', this.darkMode());
-      localStorage.setItem('darkMode', this.darkMode().toString());
-    });
-  }
-
-  toggleDarkMode() {
-    this.darkMode.update(mode => !mode);
-  }
+export class HomeComponent {
+[x: string]: any;
+  
 }

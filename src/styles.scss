@@ -32,13 +32,6 @@ $dark-theme: mat.define-theme((
   background-color: mat.get-theme-color($light-theme, surface);
   color: mat.get-theme-color($light-theme, on-surface);
   
-  // Hide scrollbar but keep functionality
-  scrollbar-width: none; /* For Firefox */
-  -ms-overflow-style: none; /* For Internet Explorer and Edge */
-  
-  &::-webkit-scrollbar {
-    display: none; /* For Chrome, Safari, and Opera */
-  }
 }
 
 // Apply dark theme when dark-mode class is present
@@ -55,29 +48,9 @@ $dark-theme: mat.define-theme((
   }
 }
 
-// Base styles
-html, body { 
-  height: 100%; 
-  margin: 0; 
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  overflow: hidden; /* Prevent scrolling on the body */
-}
+html, body{
+  height: 100%;
+  padding: 0;
+  margin: 0;
+ }
 
-// Container styles
-.container {
-  min-height: 100vh;
-  padding: 1.5rem;
-  overflow-y: auto; /* Enable scrolling within the container */
-  
-  /* Hide scrollbar for the container as well */
-  scrollbar-width: none; /* For Firefox */
-  -ms-overflow-style: none; /* For Internet Explorer and Edge */
-  
-  &::-webkit-scrollbar {
-    display: none; 
-  }
-}
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,63 +1,159 @@
-@use '@angular/material' as mat;
-
 .container {
-  min-height: 100vh;
-  padding: 1.5rem;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
 }
 
 .header {
+  flex-shrink: 0;
+  width: 100vw;
+  background: #039be5;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
-}
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease;
 
-.toggle-container {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
+  nav {
+    display: flex;
+    padding: 10px 15px;
 
-.content {
-  display: grid;
-  gap: 2rem;
-}
+    a {
+      padding: 8px 16px;
+      text-decoration: none;
+      display: inline-block;
+      background-color: #eee;
+      border-radius: 4px;
+      margin-right: 10px;
+      transition: background-color 0.3s ease, color 0.3s ease;
 
-@media (min-width: 768px) {
-  .content {
-    grid-template-columns: 1fr 1fr;
+      &:visited,
+      &:link {
+        color: #607D8B;
+      }
+
+      &:hover {
+        color: #039be5;
+        background-color: #CFD8DC;
+      }
+
+      &.active {
+        color: #039be5;
+      }
+    }
+  }
+
+  .toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+
+    mat-icon {
+      color: white;
+      transition: color 0.3s ease;
+    }
+
+    mat-slide-toggle {
+      display: flex;
+      align-items: center;
+
+      ::ng-deep {
+        .mdc-switch__shadow {
+          display: none;
+        }
+        .mdc-switch__track {
+          background-color: #eee;
+          transition: background-color 0.3s ease;
+        }
+      }
+    }
+  }
+
+  &.dark-mode {
+    background: #1a1a1a;
+    
+    nav {
+      a {
+        background-color: #333;
+        color: #eee;
+
+        &:visited,
+        &:link {
+          color: #eee;
+        }
+
+        &:hover {
+          color: #039be5;
+          background-color: #444;
+        }
+
+        &.active {
+          color: #039be5;
+          background-color: #444;
+        }
+      }
+    }
+
+    .toggle-container {
+      mat-icon {
+        color: #eee;
+      }
+
+      ::ng-deep .mdc-switch__track {
+        background-color: #555;
+      }
+    }
   }
 }
 
-.left-section > * + * {
-  margin-top: 1.5rem;
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
 }
 
-.button-group label {
-  display: block;
-  font-weight: 500;
-  margin-bottom: 0.25rem;
-}
+.footer {
+  flex-shrink: 0;
+  width: 100vw;
+  background: #f5f5f5;
+  padding: 20px 0;
+  margin: 0;
+  transition: all 0.3s ease;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 
-.button-group div {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
+  &.visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
 
-.input-field label {
-  display: block;
-  font-weight: 500;
-  margin-bottom: 0.25rem;
-}
+  .footer-content {
+    display: flex;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
 
-.card-title {
-  font-size: 1.125rem;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-}
+  .copyright {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #777;
+    transition: all 0.3s ease;
+  }
 
-mat-card {
-  max-width: 24rem;
+  &.dark-mode {
+    background: #1a1a1a;
+    color: #e0e0e0;
+
+    .copyright {
+      color: #999;
+    }
+  }
 }

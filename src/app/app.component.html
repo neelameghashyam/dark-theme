@@ -1,6 +1,9 @@
 <div class="container">
-  <div class="header">
-    <h1>Angular Dark Mode</h1>
+  <div class="header" [class.dark-mode]="darkMode()">
+    <nav>
+      <a routerLink="/" routerLinkActive="active">Home</a>
+      <a routerLink="/about" routerLinkActive="active">DashBoard</a>
+    </nav>
     <div class="toggle-container">
       <mat-icon>settings</mat-icon>
       <mat-slide-toggle [checked]="darkMode()" (change)="toggleDarkMode()">
@@ -8,53 +11,14 @@
       </mat-slide-toggle>
     </div>
   </div>
-
   <div class="content">
-    <!-- Left Section -->
-    <div class="left-section">
-      <div class="button-group">
-        <label>Buttons</label>
-        <div>
-          <button mat-raised-button color="primary">Open Dialog</button>
-          <button mat-raised-button color="accent">Accent button</button>
-          <button mat-raised-button color="warn">Warn button</button>
-        </div>
+    <router-outlet></router-outlet>
+  </div>
+  <div class="footer" [class.dark-mode]="darkMode()" [class.visible]="true">
+    <div class="footer-content">
+      <div class="copyright">
+        <p>&copy; 2025 Angular. All rights reserved.</p>
       </div>
-
-      <div class="input-field">
-        <label>Input</label>
-        <mat-form-field appearance="fill">
-          <mat-label>Enter some information</mat-label>
-          <input matInput />
-        </mat-form-field>
-      </div>
-
-      <mat-checkbox>Check this box!</mat-checkbox>
-
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>Expansion title</mat-panel-title>
-          <mat-panel-description>This is a summary of the content</mat-panel-description>
-        </mat-expansion-panel-header>
-        <p>This is the detailed content inside the expansion panel.</p>
-      </mat-expansion-panel>
-    </div>
-
-    <!-- Right Section (Card) -->
-    <div class="right-section">
-      <div class="card-title">A card</div>
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>Shiba Inu</mat-card-title>
-          <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Shiba Inu" />
-        <mat-card-content>
-          <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-          </p>
-        </mat-card-content>
-      </mat-card>
     </div>
   </div>
 </div>
